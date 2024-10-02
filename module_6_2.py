@@ -33,6 +33,17 @@ class Vehicle:
 class  Sedan(Vehicle):
     __PASSENGERS_LIMIT = 5
 
+    def get_passengers_limit(self):
+        print(f'Количество пассажиров: {self.__PASSENGERS_LIMIT}')
+
+
+    def print_info_sedan(self):
+        self.get_model()
+        self.get_horsepower()
+        self.get_color()
+        self.get_passengers_limit()
+        print(f"Владелец: {self.owner}")
+
 
 if __name__ == '__main__':
     # Текущие цвета __COLOR_VARIANTS = ['blue', 'red', 'green', 'black', 'white']
@@ -48,3 +59,4 @@ if __name__ == '__main__':
 
     # Проверяем что поменялось
     vehicle1.print_info()
+    vehicle1.print_info_sedan()
