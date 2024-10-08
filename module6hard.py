@@ -42,21 +42,14 @@ class Figure:
 
     def __len__(self):
         """ должен возвращать периметр фигуры."""
-        sides = self.get_sides()
-        if len(sides) == 12:
-            if type(self.get_sides()) == list:
-                return sum(self.get_sides())
-            else:
-                per = [side[0] for side in self.__sides]
-                return  sum(per)
-        return sum(sides)
+        return sum(self.get_sides())
 
     def set_sides(self, *new_sides):
         """ должен принимать новые стороны, если их количество не равно sides_count,
          то не изменять, в противном случае - менять."""
-        if self.__is_valid_sides(*new_sides) and self.sides_count == 12: # для куба
+        if self.__is_valid_sides(*new_sides) and self.sides_count == 12: #для куба
             self.__sides =  new_sides * self.sides_count
-        elif self.__is_valid_sides(*new_sides): #для остальных
+        elif self.__is_valid_sides(*new_sides):# для остальных
             self.__sides = new_sides
         else:
             print("Некорректные значения сторон. Стороны не изменены.")
@@ -98,8 +91,8 @@ class Cube(Figure):
     sides_count = 12
 
     def __init__(self, color, sides):
-        super().__init__(color,sides)
-
+        super().__init__(color)
+        self.set_sides(sides)
 
     def get_volume(self):
         """возвращает объём куба."""
@@ -126,9 +119,9 @@ if __name__ == "__main__":
     triangel1.set_sides(2, 3, 4 )
     print('Вывод 2, 3, 4 -', triangel1.get_sides())
     print("Вывод сторон до изменения", cube1.get_sides())
-    cube1.set_sides(5, 3, 12, 4 )  # Не изменится
+    # cube1.set_sides(5, 3, 12, 4 )  # Не изменится
     print('Вывод: [1] * 12 -',cube1.get_sides())  # Вывод: [1] * 12
-    cube1.set_sides(5)  # изменится
+    # cube1.set_sides(5)  # изменится
     print('Вывод: [5] * 12 -', cube1.get_sides())  # Вывод: [5] * 12
 
     #
